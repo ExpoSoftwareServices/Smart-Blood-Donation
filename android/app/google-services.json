@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "168165339416",
+    "project_id": "smart-blood-donation-364313",
+    "storage_bucket": "smart-blood-donation-364313.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168165339416:android:58d7ef92c33bd785caee6d",
+        "android_client_info": {
+          "package_name": "com.example.smartblood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168165339416-eh2lqoetmc72ba7uii90bh13b3tpiark.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzUKX7CWfqIyFh3CMzVp_eEwHwiP2ufuE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168165339416-eh2lqoetmc72ba7uii90bh13b3tpiark.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
