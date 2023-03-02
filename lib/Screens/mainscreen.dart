@@ -62,6 +62,7 @@ class _MainScreenState extends State<MainScreen> {
       print(fcmToken);
     }
   }
+
   Future<void> getCurrentPosition() async {
     final hasPermission = await Service.handleLocationPermission(context);
     setState(() {
@@ -89,7 +90,8 @@ class _MainScreenState extends State<MainScreen> {
         checkLocation = true;
         _currentAddress =
             '${place.subLocality} , ${place.subAdministrativeArea} , ${place.postalCode}';
-             Fetch.updateLocationfirebase(widget.phone,_currentAddress.toString(),_currentPosition!.latitude,_currentPosition!.longitude,context);
+        Fetch.updateLocationfirebase(widget.phone, _currentAddress.toString(),
+            _currentPosition!.latitude, _currentPosition!.longitude, context);
         if (kDebugMode) {
           print(_currentPosition!.latitude);
         }
@@ -104,6 +106,7 @@ class _MainScreenState extends State<MainScreen> {
       debugPrint(e);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -137,8 +140,7 @@ class _MainScreenState extends State<MainScreen> {
                     lat: data['lat'],
                     long: data['long'],
                     mtoken: data['mtoken'],
-                    isdonated: data['isdonated']
-                  );
+                    isdonated: data['isdonated']);
                 return Column(
                   children: [
                     Container(
@@ -175,11 +177,17 @@ class _MainScreenState extends State<MainScreen> {
                                     ),
                                   ],
                                 ),
-                                PersonalData.location!.isEmpty?Container():FloatingActionButton(
-                                  backgroundColor: Color.fromARGB(255, 156, 161, 249),
-                                  onPressed: (){
-                                   MapsLauncher.launchQuery('Nearest Hospitals in ${PersonalData.location!}');
-                                },child: Icon(Icons.map_sharp),)
+                                PersonalData.location!.isEmpty
+                                    ? Container()
+                                    : FloatingActionButton(
+                                        backgroundColor:
+                                            Color.fromARGB(255, 156, 161, 249),
+                                        onPressed: () {
+                                          MapsLauncher.launchQuery(
+                                              'Nearest Hospitals in ${PersonalData.location!}');
+                                        },
+                                        child: Icon(Icons.map_sharp),
+                                      )
                               ],
                             ),
                             const SizedBox(
@@ -367,13 +375,17 @@ class _MainScreenState extends State<MainScreen> {
                                                 userData['donateddate']);
                                         return InkWell(
                                           onTap: () async {
-                                            if (register.isdonated==true) {
+                                            if (register.isdonated == true) {
                                               DateTime tsdate = DateTime
                                                   .fromMillisecondsSinceEpoch(
-                                                      register.donateddate!
-                                                          .millisecondsSinceEpoch);
-                                              String datetime =
-                                                  "${tsdate.year}-${tsdate.month}-${tsdate.day}";
+                                                register.donateddate!
+                                                    .millisecondsSinceEpoch,
+                                              );
+                                              final f = DateFormat('yyyy-MM-dd')
+                                                  .format(tsdate);
+
+                                              String datetime = f;
+
                                               DateTime dt1 =
                                                   DateTime.parse(datetime);
 
@@ -383,7 +395,8 @@ class _MainScreenState extends State<MainScreen> {
                                               String datetime1 =
                                                   DateFormat("dd MMM yyyy")
                                                       .format(dt4);
-                                              AllWidgets.toast("User Already Donated Blood he will be Avail on $datetime1");
+                                              AllWidgets.toast(
+                                                  "User Already Donated Blood he will be Avail on $datetime1");
                                             } else {
                                               Navigator.push(
                                                   context,
@@ -444,7 +457,6 @@ class _MainScreenState extends State<MainScreen> {
                                                                           5.0),
                                                               child:
                                                                   Image.asset(
-
                                                                 "assets/png/user.png",
                                                                 width: 70,
                                                                 height: 70,
